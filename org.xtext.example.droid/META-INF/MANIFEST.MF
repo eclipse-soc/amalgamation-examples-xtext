@@ -12,6 +12,20 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
  com.ibm.icu;resolution:=optional,
- org.eclipse.xtext.xtend;resolution:=optional
+ org.eclipse.xtext.xtend;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.xtext.example.droid,
+ org.xtext.example.droid.services,
+ org.xtext.example.droid.droid,
+ org.xtext.example.droid.droid.impl,
+ org.xtext.example.droid.droid.util,
+ org.xtext.example.droid.parseTreeConstruction,
+ org.xtext.example.droid.parser.antlr,
+ org.xtext.example.droid.parser.antlr.internal,
+ org.xtext.example.droid.validation
+
