@@ -2,8 +2,6 @@ grammar org.xtext.example.droid.Droid with org.eclipse.xtext.common.Terminals
 
 generate droid "http://www.xtext.org/example/droid/Droid"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Application:
+	'application' name=STRING
+;
