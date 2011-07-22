@@ -4,5 +4,9 @@ generate droid "http://www.xtext.org/example/droid/Droid"
 
 Application:
 	'application' name=STRING
-		'=>' packageName=ID
+		'=>' packageName=PackageName
+;
+
+PackageName:
+	ID ('.' ID)*
 ;
