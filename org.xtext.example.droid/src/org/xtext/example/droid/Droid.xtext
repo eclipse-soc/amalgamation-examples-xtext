@@ -5,7 +5,7 @@ generate droid "http://www.xtext.org/example/droid/Droid"
 Application:
 	'application' name=STRING
 		'=>' packageName=PackageName
-	(screens+=Screen)+
+	(screens+=Screen | layouts+=Layout)+
 ;
 
 Screen:
@@ -13,6 +13,21 @@ Screen:
 	'{'
 	
 	'}'
+;
+
+Layout:
+	'layout' name=ID
+	'{'
+		views=ViewCollection
+	'}'
+;
+
+ViewCollection:
+	('#' views+=View)+
+;
+
+View:
+	'view'
 ;
 
 PackageName:
