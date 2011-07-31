@@ -5,6 +5,7 @@ generate droid "http://www.xtext.org/example/droid/Droid"
 Application:
 	'application' name=STRING
 		'=>' packageName=PackageName
+	(screens+=Screen)+
 ;
 
 Screen:
