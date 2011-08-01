@@ -5,7 +5,7 @@ generate droid "http://www.xtext.org/example/droid/Droid"
 Application:
 	'application' name=STRING
 		'=>' packageName=PackageName
-	(screens+=Screen | layouts+=Layout)+
+	(screens+=Screen | layouts+=Layout | resources+=Resource)+
 ;
 
 Screen:
@@ -69,6 +69,81 @@ EditText:
 	'}'
 ;
 
+Resource:
+	StringResource | IntegerResource | BooleanResource
+	| ColorResource | DimensionResource
+	| ArrayResource | DrawableResource
+;
+
+StringResource:
+	name=ID '=' value=STRING
+;
+
+IntegerResource:
+	name=ID '=' value=INT
+;
+
+BooleanResource:
+	name=ID '=' value=BOOL
+;
+
+ColorResource:
+	name=ID '=' value=HEX_COLOR
+;
+
+DimensionResource:
+	name=ID '=' value=DimensionValue
+;
+
+ArrayResource:
+	IntegerArrayResource | StringArrayResource
+;
+
+IntegerArrayResource:
+	name=ID '=' '['
+		(items+=INT (',' items+=INT)* )
+	']'
+;
+
+StringArrayResource:
+	name=ID '=' '['
+		(items+=STRING (',' items+=STRING)* )
+	']'
+;
+
+DrawableResource:
+	(BitmapDrawableResource | TransitionDrawableResource)
+;
+
+BitmapDrawableResource:
+	name=ID '=' filename=ID
+;
+
+TransitionDrawableResource:
+	name=ID
+		from=[BitmapDrawableResource] '<->' to=[BitmapDrawableResource]
+;
+
 PackageName:
 	ID ('.' ID)*
+;
+
+DimensionValue:
+	FLOAT ('dp' | 'sp' | 'pt' | 'px' | 'mm' | 'in')
+;
+
+BOOL:
+	'YES' | 'NO'
+;
+
+FLOAT:
+	INT ('.' INT)?
+;
+
+terminal HEX_COLOR:
+	'#'
+	('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f')
+	('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f')
+	('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f')
+	(('0'..'9'|'A'..'F'|'a'..'f') ('0'..'9'|'A'..'F'|'a'..'f'))?
 ;
