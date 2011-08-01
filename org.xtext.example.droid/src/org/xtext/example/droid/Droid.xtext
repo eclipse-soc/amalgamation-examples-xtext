@@ -11,7 +11,7 @@ Application:
 Screen:
 	'screen' name=ID
 	'{'
-	
+		('show' layout=[Layout])?
 	'}'
 ;
 
