@@ -36,35 +36,35 @@ Widget:
 
 TextView:
 	'textView' (name=ID)?
-		text=STRING
+		text=StringVA
 	'{'
 	'}'
 ;
 
 Button:
 	'button' (name=ID)?
-		( 'text' '=' text=STRING | 'image' '=' src=STRING )
+		( text=StringVA | src=AnyDrawableVA )
 	'{'
 	'}'
 ;
 
 ImageView:
 	'imageView' (name=ID)?
-		src=STRING
+		src=AnyDrawableVA
 	'{'
 	'}'
 ;
 
 Spinner:
 	'spinner' (name=ID)?
-		prompt=STRING
+		prompt=StringVA
 	'{'
 	'}'
 ;
 
 EditText:
 	'editText' (name=ID)?
-		text=STRING?
+		text=StringVA?
 	'{'
 	'}'
 ;
