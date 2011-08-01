@@ -27,7 +27,46 @@ ViewCollection:
 ;
 
 View:
-	'view'
+	Widget | Layout
+;
+
+Widget:
+	TextView | Button | ImageView | EditText | Spinner
+;
+
+TextView:
+	'textView' (name=ID)?
+		text=STRING
+	'{'
+	'}'
+;
+
+Button:
+	'button' (name=ID)?
+		( 'text' '=' text=STRING | 'image' '=' src=STRING )
+	'{'
+	'}'
+;
+
+ImageView:
+	'imageView' (name=ID)?
+		src=STRING
+	'{'
+	'}'
+;
+
+Spinner:
+	'spinner' (name=ID)?
+		prompt=STRING
+	'{'
+	'}'
+;
+
+EditText:
+	'editText' (name=ID)?
+		text=STRING?
+	'{'
+	'}'
 ;
 
 PackageName:
