@@ -124,6 +124,99 @@ TransitionDrawableResource:
 		from=[BitmapDrawableResource] '<->' to=[BitmapDrawableResource]
 ;
 
+ValueAccess:
+	(StringVA | IntegerVA | BooleanVA | AnyDrawableVA | DimensionVA)
+	| ResourceAccess
+;
+
+AnyDrawableVA:
+	DrawableVA | ColorVA
+;
+
+StringVA:
+	StringRA | value=STRING
+;
+
+IntegerVA:
+	IntegerRA | value=INT
+;
+
+BooleanVA:
+	BooleanRA | value=BOOL
+;
+
+ColorVA:
+	ColorRA | value=HEX_COLOR
+;
+
+DimensionVA:
+	DimensionRA | value=DimensionValue
+;
+
+DrawableVA:
+	DrawableRA
+;
+
+ResourceAccess:
+	StringRA | IntegerRA | BooleanRA | ColorRA | DimensionRA | DrawableRA
+;
+
+StringRA:
+	'string'
+	(
+	  ( '(' (package=PackageName '/')? resource=[StringResource] ')' )
+	| ( '[' (package=PackageName '/')? externalResource=ID ']' )
+	)
+;
+
+IntegerRA:
+	'integer'
+	(
+	  ( '(' (package=PackageName '/')? resource=[IntegerResource] ')' )
+	| ( '[' (package=PackageName '/')? externalResource=ID ']' )
+	)
+;
+
+BooleanRA:
+	'bool'
+	(
+	  ( '(' (package=PackageName '/')? resource=[BooleanResource] ')' )
+	| ( '[' (package=PackageName '/')? externalResource=ID ']' )
+	)
+;
+
+ColorRA:
+	'color'
+	(
+	  ( '(' (package=PackageName '/')? resource=[ColorResource] ')' )
+	| ( '[' (package=PackageName '/')? externalResource=ID ']' )
+	)
+;
+
+DimensionRA:
+	'dimen'
+	(
+	  ( '(' (package=PackageName '/')? resource=[DimensionResource] ')' )
+	| ( '[' (package=PackageName '/')? externalResource=ID ']' )
+	)
+;
+
+ArrayRA:
+	'array'
+	(
+	  ( '(' (package=PackageName '/')? resource=[ArrayResource] ')' )
+	| ( '[' (package=PackageName '/')? externalResource=ID ']' )
+	)
+;
+
+DrawableRA:
+	'drawable'
+	(
+	  ( '(' (package=PackageName '/')? resource=[DrawableResource] ')' )
+	| ( '[' (package=PackageName '/')? externalResource=ID ']' )
+	)
+;
+
 PackageName:
 	ID ('.' ID)*
 ;
