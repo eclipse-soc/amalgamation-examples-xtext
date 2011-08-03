@@ -228,32 +228,32 @@ LayoutProperties:
 	'{'
 	 (
 		//LinearLayoutParams
-		('height:' layout_height=DimensionVA ';') |
-		('width:' layout_width=DimensionVA ';') |
-		('weight:' layout_weight=IntegerVA ';') |
-		('marginBottom:' layout_marginBottom=DimensionVA ';') |
-		('marginLeft:' layout_marginLeft=DimensionVA ';') |
-		('marginRight:' layout_marginRight=DimensionVA ';') |
-		('marginTop:' layout_marginTop=DimensionVA ';') |
+		('height:' layout_height=DimensionVA ';')?
+		& ('width:' layout_width=DimensionVA ';')?
+		& ('weight:' layout_weight=IntegerVA ';')?
+		& ('marginBottom:' layout_marginBottom=DimensionVA ';')?
+		& ('marginLeft:' layout_marginLeft=DimensionVA ';')?
+		& ('marginRight:' layout_marginRight=DimensionVA ';')?
+		& ('marginTop:' layout_marginTop=DimensionVA ';')?
 
 		//RelativeLayoutParams
-		('above:' layout_above=[View] ';') |
-		('alignBaseline:' layout_alignBaseline=[View] ';') |
-		('alignBottom:' layout_alignBottom=[View] ';') |
-		('alignLeft:' layout_alignLeft=[View] ';') |
-		('alignParentBottom:' layout_alignParentBottom=BooleanVA ';') |
-		('alignParentLeft:' layout_alignParentLeft=BooleanVA ';') |
-		('alignParentRight:' layout_alignParentRight=BooleanVA ';') |
-		('alignParentTop:' layout_alignParentTop=BooleanVA ';') |
-		('alignTop:' layout_alignTop=[View] ';') |
-		('alignWithParentIfMissing:' layout_alignWithParentIfMissing=BooleanVA ';') |
-		('below:' layout_below=[View] ';') |
-		('centerHorizontal:' layout_centerHorizontal=BooleanVA ';') |
-		('centerInParent:' layout_centerInParent=BooleanVA ';') |
-		('centerVertical:' layout_centerVertical=BooleanVA ';') |
-		('toLeftOf:' layout_toLeftOf=[View] ';') |
-		('toRightOf:' layout_toRightOf=[View] ';')
-	)+
+		& ('above:' layout_above=[View] ';')?
+		& ('alignBaseline:' layout_alignBaseline=[View] ';')?
+		& ('alignBottom:' layout_alignBottom=[View] ';')?
+		& ('alignLeft:' layout_alignLeft=[View] ';')?
+		& ('alignParentBottom:' layout_alignParentBottom=BooleanVA ';')?
+		& ('alignParentLeft:' layout_alignParentLeft=BooleanVA ';')?
+		& ('alignParentRight:' layout_alignParentRight=BooleanVA ';')?
+		& ('alignParentTop:' layout_alignParentTop=BooleanVA ';')?
+		& ('alignTop:' layout_alignTop=[View] ';')?
+		& ('alignWithParentIfMissing:' layout_alignWithParentIfMissing=BooleanVA ';')?
+		& ('below:' layout_below=[View] ';')?
+		& ('centerHorizontal:' layout_centerHorizontal=BooleanVA ';')?
+		& ('centerInParent:' layout_centerInParent=BooleanVA ';')?
+		& ('centerVertical:' layout_centerVertical=BooleanVA ';')?
+		& ('toLeftOf:' layout_toLeftOf=[View] ';')?
+		& ('toRightOf:' layout_toRightOf=[View] ';')?
+	)
 	'}'
 ;
 
