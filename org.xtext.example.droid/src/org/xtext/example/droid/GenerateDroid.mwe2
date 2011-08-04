@@ -54,6 +54,10 @@ Workflow {
 			//  options = {
 			//		backtrack = true
 			//	}
+
+				//http://www.antlr.org/pipermail/antlr-interest/2007-March/020014.html
+				//http://20000frames.blogspot.com/2010/09/dealing-with-could-not-even-do-k1-for.html
+				antlrParam = "-Xconversiontimeout" antlrParam = "10000"
 			}
 
 			// java-based API for validation 

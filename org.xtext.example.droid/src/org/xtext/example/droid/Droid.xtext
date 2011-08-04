@@ -16,10 +16,47 @@ Screen:
 ;
 
 Layout:
+	(isRelative?='relative')?
 	'layout' name=ID
 	'{'
-		(layoutProperties=LayoutProperties)?
-		views=ViewCollection
+	(
+	  //View Properties
+	  ('alpha:' alpha=FLOAT ';')?
+	  & ('background:' background=AnyDrawableVA ';')?
+	  & ('minHeight:' minHeight=DimensionVA ';')?
+	  & ('minWidth:' minWidth=DimensionVA ';')?
+	  & ('nextFocusDown:' nextFocusDown=[View] ';')?
+	  & ('nextFocusLeft:' nextFocusLeft=[View] ';')?
+	  & ('nextFocusRight:' nextFocusRight=[View] ';')?
+	  & ('nextFocusUp:' nextFocusUp=[View] ';')?
+	  & ('padding:' padding=DimensionVA ';')?
+	  & ('paddingBottom:' paddingBottom=DimensionVA';')?
+	  & ('paddingLeft:' paddingLeft=DimensionVA';')?
+	  & ('paddingRight:' paddingRight=DimensionVA';')?
+	  & ('paddingTop:' paddingTop=DimensionVA';')?
+	  & ('rotation:' rotation=DimensionVA';')?
+	  & ('rotationX:' rotationX=DimensionVA';')?
+	  & ('rotationY:' rotationY=DimensionVA';')?
+	  & ('saveEnabled:' saveEnabled=BooleanVA';')?
+	  & ('scaleX:' scaleX=DimensionVA';')?
+	  & ('scaleY:' scaleY=DimensionVA';')?
+	  & ('scrollX:' scrollX=DimensionVA';')?
+	  & ('scrollY:' scrollY=DimensionVA';')?
+	  & ('scrollbars:' scrollbars=BooleanVA';')?
+	  & ('transformPivotX:' transformPivotX=DimensionVA';')?
+	  & ('transformPivotY:' transformPivotY=DimensionVA';')?
+	  & ('translationX:' translationX=DimensionVA';')?
+	  & ('translationY:' translationY=DimensionVA';')?
+	  & ('visibility:' visibility=LayoutVisibilityKind';')?
+
+	  & (layoutProperties=LayoutProperties)?
+
+	  //Layout Properties
+	  & ('gravity:' gravity+=LayoutGravityKind ('|' gravity+=LayoutGravityKind)* ';')?
+	  & ('orientation:' orientation=LayoutOrientationKind ';')?
+	)
+
+	views=ViewCollection
 	'}'
 ;
 
@@ -279,6 +316,21 @@ FLOAT:
 
 enum LayoutDimensionKind:
 	fill_parent | match_parent | wrap_content
+;
+
+enum LayoutVisibilityKind:
+	visible | invisible | gone
+;
+
+enum LayoutGravityKind :
+	top | bottom | left | right |
+	center | center_vertical | center_horizontal |
+	fill | fill_vertical | fill_horizontal |
+	clip_vertical | clip_horizontal
+;
+
+enum LayoutOrientationKind:
+	horizontal | vertical
 ;
 
 terminal HEX_COLOR:
