@@ -131,7 +131,7 @@ TransitionDrawableResource:
 ;
 
 ValueAccess:
-	(StringVA | IntegerVA | BooleanVA | AnyDrawableVA | DimensionVA)
+	(StringVA | IntegerVA | BooleanVA | AnyDrawableVA | DimensionVA | LayoutDimensionVA)
 	| ResourceAccess
 ;
 
@@ -157,6 +157,10 @@ ColorVA:
 
 DimensionVA:
 	DimensionRA | value=DimensionValue
+;
+
+LayoutDimensionVA:
+	DimensionVA | (const_value=LayoutDimensionKind)
 ;
 
 DrawableVA:
@@ -228,8 +232,8 @@ LayoutProperties:
 	'{'
 	 (
 		//LinearLayoutParams
-		('height:' layout_height=DimensionVA ';')?
-		& ('width:' layout_width=DimensionVA ';')?
+		('height:' layout_height=LayoutDimensionVA ';')?
+		& ('width:' layout_width=LayoutDimensionVA ';')?
 		& ('weight:' layout_weight=IntegerVA ';')?
 		& ('marginBottom:' layout_marginBottom=DimensionVA ';')?
 		& ('marginLeft:' layout_marginLeft=DimensionVA ';')?
@@ -271,6 +275,10 @@ BOOL:
 
 FLOAT:
 	INT ('.' INT)?
+;
+
+enum LayoutDimensionKind:
+	fill_parent | match_parent | wrap_content
 ;
 
 terminal HEX_COLOR:
