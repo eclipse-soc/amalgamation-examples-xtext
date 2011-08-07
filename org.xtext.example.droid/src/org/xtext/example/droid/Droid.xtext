@@ -76,7 +76,34 @@ TextView:
 	'textView' (name=ID)?
 		text=StringVA
 	'{'
+	(
 		(layoutProperties=LayoutProperties)?
+	  & ('top:' top=DimensionVA ';')?
+	  & ('left:' left=DimensionVA ';')?
+	  & ('width:' width=DimensionVA ';')?
+	  & ('height:' height=DimensionVA ';')?
+	  & ('background:' background=AnyDrawableVA ';')?
+	  & ('clickable:' clickable=BooleanVA ';')?
+	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
+	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
+
+	  //TextView attributes
+	  & ('autoLink:' autoLink=AutoLinkKind ';')?
+	  & ('autoText:' autoText=BooleanVA ';')?
+	  & ('capitalize:' capitalize=CapitalizeKind ';')?
+	  & ('digits:' digits=StringVA ';')?
+	  & ('editable:' editable=BooleanVA ';')?
+	  & ('gravity:' gravity=LayoutGravityKind';')?
+	  & ('hint:' hint=StringVA ';')?
+	  & ('numeric:' numeric=BooleanVA ';')?
+	  & ('password:' password=BooleanVA ';')?
+	  & ('phoneNumber:' phoneNumber=BooleanVA ';')?
+	  & ('singleLine:' singleLine=BooleanVA ';')?
+	  & ('textColor:' textColor=ColorVA ';')?
+	  & ('typeface:' typeface=TypefaceKind ';')?
+	  & ('textSize:' textSize=DimensionVA ';')?
+	  & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';')?		 
+	)
 	'}'
 ;
 
@@ -84,7 +111,18 @@ Button:
 	'button' (name=ID)?
 		( text=StringVA | src=AnyDrawableVA )
 	'{'
+	(
 		(layoutProperties=LayoutProperties)?
+	  & ('top:' top=DimensionVA ';')?
+	  & ('left:' left=DimensionVA ';')?
+	  & ('width:' width=DimensionVA ';')?
+	  & ('height:' height=DimensionVA ';')?
+	  & ('background:' background=AnyDrawableVA ';')?
+	  & ('clickable:' clickable=BooleanVA ';')?
+
+	  // Specific properties
+	  & ('hint:' hint=StringVA ';')?
+	)
 	'}'
 ;
 
@@ -92,7 +130,17 @@ ImageView:
 	'imageView' (name=ID)?
 		src=AnyDrawableVA
 	'{'
+	(
 		(layoutProperties=LayoutProperties)?
+	  & ('top:' top=DimensionVA ';')?
+	  & ('left:' left=DimensionVA ';')?
+	  & ('width:' width=DimensionVA ';')?
+	  & ('height:' height=DimensionVA ';')?
+	  & ('background:' background=AnyDrawableVA ';')?
+	  & ('clickable:' clickable=BooleanVA ';')?
+	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
+	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
+	)
 	'}'
 ;
 
@@ -100,7 +148,17 @@ Spinner:
 	'spinner' (name=ID)?
 		prompt=StringVA
 	'{'
+	(
 		(layoutProperties=LayoutProperties)?
+	  & ('top:' top=DimensionVA ';')?
+	  & ('left:' left=DimensionVA ';')?
+	  & ('width:' width=DimensionVA ';')?
+	  & ('height:' height=DimensionVA ';')?
+	  & ('background:' background=AnyDrawableVA ';')?
+	  & ('clickable:' clickable=BooleanVA ';')?
+	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
+	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
+	)
 	'}'
 ;
 
@@ -108,7 +166,34 @@ EditText:
 	'editText' (name=ID)?
 		text=StringVA?
 	'{'
+	(
 		(layoutProperties=LayoutProperties)?
+	  & ('top:' top=DimensionVA ';')?
+	  & ('left:' left=DimensionVA ';')?
+	  & ('width:' width=DimensionVA ';')?
+	  & ('height:' height=DimensionVA ';')?
+	  & ('background:' background=AnyDrawableVA ';')?
+	  & ('clickable:' clickable=BooleanVA ';')?
+	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
+	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
+
+	  //TextView attributes
+	  & ('autoLink:' autoLink=AutoLinkKind ';')?
+	  & ('autoText:' autoText=BooleanVA ';')?
+	  & ('capitalize:' capitalize=CapitalizeKind ';')?
+	  & ('digits:' digits=StringVA ';')?
+	  & ('editable:' editable=BooleanVA ';')?
+	  & ('gravity:' gravity=LayoutGravityKind ';')?
+	  & ('hint:' hint=StringVA ';')?
+	  & ('numeric:' numeric=BooleanVA ';')?
+	  & ('password:' password=BooleanVA ';')?
+	  & ('phoneNumber:' phoneNumber=BooleanVA ';')?
+	  & ('singleLine:' singleLine=BooleanVA ';')?
+	  & ('textColor:' textColor=ColorVA';')?
+	  & ('typeface:' typeface=TypefaceKind ';')?
+	  & ('textSize:' textSize=DimensionVA ';')?
+	  & ('textStyle:' textStyle+=TextStyleKind ('|' textStyle+=TextStyleKind)* ';')?
+	)
 	'}'
 ;
 
@@ -331,6 +416,22 @@ enum LayoutGravityKind :
 
 enum LayoutOrientationKind:
 	horizontal | vertical
+;
+
+enum AutoLinkKind:
+	none | web | email | phone | map | all
+;
+
+enum CapitalizeKind:
+	none | sentences | words | characters
+;
+
+enum TypefaceKind:
+	normal | sans | serif | monospace
+;
+
+enum TextStyleKind:
+	normal | bold | italic
 ;
 
 terminal HEX_COLOR:
