@@ -5,13 +5,31 @@ generate droid "http://www.xtext.org/example/droid/Droid"
 Application:
 	'application' name=STRING
 		'=>' packageName=PackageName
+		(
+			('version:' versionCode=INT '=>' versionName=STRING)?
+		  & (sdkVersion=ApplicationUsesSDK)?
+		)
 	(screens+=Screen | layouts+=Layout | resources+=Resource)+
+;
+
+ApplicationUsesSDK:
+	'sdk:'
+	'{'
+	(
+		('min:' minSdkVersion=INT ';')?
+	  & ('max:' maxSdkVersion=INT ';')?
+	  & ('target:' targetSdkVersion=INT ';')?
+	)
+	'}'
 ;
 
 Screen:
 	'screen' name=ID
 	'{'
-		('show' layout=[Layout])?
+	(
+		('show' layout=[Layout])
+	  | widgets=ViewCollection
+	)
 	'}'
 ;
 
