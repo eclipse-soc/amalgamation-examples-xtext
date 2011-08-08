@@ -33,6 +33,26 @@ Screen:
 	'}'
 ;
 
+Action:
+	(GoToURLAction | ShowLayoutAction | InvokeScreenAction)
+;
+
+GoToURLAction:
+	'goTo' url=STRING
+;
+
+ShowLayoutAction:
+	'show' layout=[Layout]
+;
+
+InvokeScreenAction:
+	'invoke' screen=[Screen]
+;
+
+ButtonTarget returns InvokeScreenAction:
+	'to' screen=[Screen]
+;
+
 Layout:
 	(isRelative?='relative')?
 	'layout' name=ID
@@ -47,6 +67,7 @@ Layout:
 	  & ('nextFocusLeft:' nextFocusLeft=[View] ';')?
 	  & ('nextFocusRight:' nextFocusRight=[View] ';')?
 	  & ('nextFocusUp:' nextFocusUp=[View] ';')?
+	  & ('onClick:' onClick=Action ';')?
 	  & ('padding:' padding=DimensionVA ';')?
 	  & ('paddingBottom:' paddingBottom=DimensionVA';')?
 	  & ('paddingLeft:' paddingLeft=DimensionVA';')?
@@ -105,6 +126,8 @@ TextView:
 	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
 	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
 
+	  & ('onClick:' onClick=Action ';')?
+
 	  //TextView attributes
 	  & ('autoLink:' autoLink=AutoLinkKind ';')?
 	  & ('autoText:' autoText=BooleanVA ';')?
@@ -128,6 +151,7 @@ TextView:
 Button:
 	'button' (name=ID)?
 		( text=StringVA | src=AnyDrawableVA )
+		( onClick=ButtonTarget )?
 	'{'
 	(
 		(layoutProperties=LayoutProperties)?
@@ -137,6 +161,8 @@ Button:
 	  & ('height:' height=DimensionVA ';')?
 	  & ('background:' background=AnyDrawableVA ';')?
 	  & ('clickable:' clickable=BooleanVA ';')?
+
+	  & ('onClick:' onClick=Action ';')?
 
 	  // Specific properties
 	  & ('hint:' hint=StringVA ';')?
@@ -158,6 +184,8 @@ ImageView:
 	  & ('clickable:' clickable=BooleanVA ';')?
 	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
 	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
+
+	  & ('onClick:' onClick=Action ';')?
 	)
 	'}'
 ;
@@ -176,6 +204,8 @@ Spinner:
 	  & ('clickable:' clickable=BooleanVA ';')?
 	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
 	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
+
+	  & ('onClick:' onClick=Action ';')?
 	)
 	'}'
 ;
@@ -194,6 +224,8 @@ EditText:
 	  & ('clickable:' clickable=BooleanVA ';')?
 	  & ('fadeScrollBars:' fadeScrollBars=BooleanVA ';')?
 	  & ('isScrollContainer:' isScrollContainer=BooleanVA ';')?
+
+	  & ('onClick:' onClick=Action ';')?
 
 	  //TextView attributes
 	  & ('autoLink:' autoLink=AutoLinkKind ';')?
