@@ -3,13 +3,6 @@
 
 <plugin>
 
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.xtext.org/example/droid/Droid" 
-       class = "org.xtext.example.droid.droid.DroidPackage"
-       genModel = "org/xtext/example/droid/Droid.genmodel" /> 
-	
-  </extension>
 
 
 

@@ -1,6 +1,6 @@
 grammar org.xtext.example.droid.Droid with org.eclipse.xtext.common.Terminals
 
-generate droid "http://www.xtext.org/example/droid/Droid"
+import "http://www.xtext.org/example/droid/Droid"
 
 Application:
 	'application' name=STRING
